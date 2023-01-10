@@ -1,3 +1,4 @@
+//fonction permettant de récup liste
 
   async function getData() {
     return new Promise((resolve, reject) => {
@@ -24,14 +25,16 @@
     let html = "";
     // Boucle
     for (const canap of canaps) {
-      html += `<a href="./product.html?id=${canap._id}">`;
+      html += `<a href="./product.html?id=${canap._id}"><article><img src="${canap.imageUrl}" alt="${canap.altTxt}"><h3 class="productName"></h3><p class="productDescription">${canap.description}</p></article></a>`;
     }
-    console.log(html);
-  
+    
+    const productContainer = document.getElementById("items")
+    productContainer.innerHTML = html
+
     // Todo : remplir avec les bonnes donnees
   //   <a href="./product.html?id=42">
   //             <article>
-  //               <img src=".../product01.jpg" alt="Lorem ipsum dolor sit amet, Kanap name1">
+  //               <img src=".../pro-duct01.jpg" alt="Lorem ipsum dolor sit amet, Kanap name1">
   //               <h3 class="productName">Kanap name1</h3>
   //               <p class="productDescription">Dis enim malesuada risus sapien gravida nulla nisl arcu. Dis enim malesuada risus sapien gravida nulla nisl arcu.</p>
   //             </article>
@@ -48,7 +51,7 @@
 
   /* 
 function displayProducts(canaps) {
-  let productContainer = document.getElementById("items")
+  const productContainer = document.getElementById("items")
   for (canap of canaps) {
     let linkElement = document.createElement("a")
     let articleElement = document.createElement("article")
